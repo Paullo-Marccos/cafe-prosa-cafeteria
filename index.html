@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <meta name="author" content="Paullo-Marccos">
+    <link rel="stylesheet" href="css/index.css">
+
+    <title>Cafeteria</title>
+
+</head>
+
+<body>
+    <header>
+        <div class="conteudo-header">
+            <h1>CAFETERIA</h1>
+            <p>Um refúgio urbano onde o café de especialidade atinge seu ponto máximo em meio a um refúgio de plantas e luz natural. O lugar ideal para desacelerar, saborear quitutes artesanais e renovar as energias.</p>
+        </div>
+    </header>
+        <nav class="navegar">
+            <div class="logo">
+                <!-- &amp; = & -->
+                <a href="#">☕ Café &amp; Prosa</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#cardapio">Cardápio</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#contato" id="link-contato">Contato</a></li>
+            </ul>
+            <a href="#cardapio" class="btn-pedir">Peça Online</a>
+        </nav>
+
+        <h2 class="especialprincipal">Especiais</h2>
+            <div class="carrossel">
+                <div class="especiais">
+                    <button class="seta" id="seta-esq" aria-label="Anterior">‹</button>
+
+                        <img src="img/achocolatado.png" class="tamanho slide ativo" alt="Achocolatado">
+                        <img src="img/cappuccino.png" class="tamanho slide" alt="Cappuccino">
+                        <img src="img/express.png" class="tamanho slide" alt="Expresso" >
+
+                    <button class="seta" id="seta-dir" aria-label="Próximo">›</button>
+                </div>
+            </div>   
+            <footer>
+                <div class="scroll-baixo">
+                    <span>Role pra baixo</span>
+                    <div class="seta-baixo">↓</div>
+                </div>
+            </footer>
+
+            <section id="cardapio">
+                
+                <div class="tabelas">
+                    <div class="coluna" id="cafesebebidas">
+                        <h2>Cafés &amp; Bebidas</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <span class="so-leitor">Imagem</span>
+                                        </th>
+                                        <th>
+                                            <span class="so-leitor">Produto</span>
+                                        </th>
+                                        <th>
+                                            <span class="so-leitor">Preço</span>
+                                        </th>
+                                        <th>
+                                            <span class="so-leitor">Quantidade</span>
+                                        </th>
+                                        <th>
+                                            <span class="so-leitor">Total</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lista-cafesebebidas"></tbody>
+                            </table>
+                    </div>
+
+                    <div class="coluna" id="salgadoselanches">
+                        <h2>Salgados &amp; Lanches</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <span class="so-leitor">Imagem</span>
+                                        </th>
+                                        <th>
+                                            <span class="so-leitor">Produto</span>
+                                        </th>
+                                        <th>
+                                            <span class="so-leitor">Preço</span>
+                                        </th>
+                                        <th>
+                                            <span class="so-leitor">Quantidade</span>
+                                        </th>
+                                        <th>
+                                            <span class="so-leitor">Total</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lista-salgadoselanches"></tbody>
+                            </table>
+                    </div>
+
+                    <div class="coluna" id="docesesobremesas">
+                        <h2>Doces &amp; Sobremesas</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <span class="so-leitor">Imagem</span>
+                                        </th>
+                                        <th>
+                                            <span class="so-leitor">Produto</span>
+                                        </th>
+                                        <th>
+                                            <span class="so-leitor">Preço</span>
+                                        </th>
+                                        <th>
+                                            <span class="so-leitor">Quantidade</span>
+                                        </th>
+                                        <th>
+                                            <span class="so-leitor">Total</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lista-docesesobremesas"></tbody>
+                            </table>
+                    </div>
+                </div>
+
+                <footer>
+                    <span id="rodape-itens">0 itens</span>
+                    <strong>Subtotal: <span id="rodape-subtotal">R$ 0,00</span></strong>
+                </footer>
+
+            </section>
+
+            <section id="sobre">
+                <h2>Sobre a Café &amp; Prosa</h2>
+
+                <p class="sobre-texto">
+                    A Café &amp; Prosa nasceu do desejo genuíno de criar um refúgio acolhedor em meio à correria da cidade. 
+                    Aqui, cada xícara de café especial é servida com calma, nossos quitutes são preparados de forma 
+                    artesanal todos os dias, e o ambiente convida você a desacelerar e aproveitar os bons momentos.
+                </p>
+            
+                <div class="sobre-cards">
+                    <div class="card-sobre">
+                        <h3>☕ Café de Especialidade</h3>
+                        <p>Grãos cuidadosamente selecionados, moídos e extraídos na hora para entregar a você a melhor experiência sensorial.</p>
+                    </div>
+                
+                    <div class="card-sobre">
+                        <h3>🌿 Atmosfera Acolhedora</h3>
+                        <p>Um espaço planejado com plantas, luz natural e cantinhos tranquilos, perfeitos para ler, trabalhar ou jogar conversa fora.</p>
+                    </div>
+                
+                    <div class="card-sobre">
+                        <h3>🥐 Feito com Afeto</h3>
+                        <p>Salgados fresquinhos e doces artesanais que abraçam o paladar e tornam qualquer momento do dia mais especial.</p>
+                    </div>
+                </div>
+        </section>
+
+        
+            
+
+
+            <!-- CARRINHO -->
+
+            <button id="btn-carrinho" class="btn-carrinho" aria-label="Abrir carrinho">🛒
+                <span id="carrinho-contador" class="contador oculto">0
+                </span>
+            </button>
+
+            <!-- Fundo escuro atrás do painel -->
+            <div id="overlay" class="overlay"></div>
+
+            <!-- painEL LATERAL -->
+             <aside id="painel-carrinho" class="painel-carrinho" aria-label="Carrinho de compras ">
+                <div class="carrinho-header">
+                    <h2>Seu pedido</h2>
+                        <button id="fechar-carrinho" class="fechar" aria-label="Fechar carrinho">X
+                        </button>
+                </div>
+                <div id="carrinho-itens" class="carrinho-itens"></div>
+
+                <div class="carrinho-footer">
+                    <div class="linha-total">
+                        <span>Subtotal</span>
+                        <span id="carrinho-subtotal">R$ 0,00</span>
+                    </div>
+                    <button id="btn-finalizar" class="btn-finalizar">Finalizar pedido</button>
+                </div>
+             </aside>
+
+
+
+            <script src="java/index.js"></script>
+</body>
+
+</html>
