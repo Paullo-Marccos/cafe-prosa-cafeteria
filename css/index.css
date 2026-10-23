@@ -476,10 +476,314 @@ html{
 
 
 
+.com-js .revelar{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.com-js .revelar.visivel{
+    opacity: 1;
+    transform: none;
+}
 
 
+/* ---------- BARRA DE PROGRESSO DA ROLAGEM ---------- */
+.barra-progresso{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;                 /* o JS muda a largura conforme você rola */
+    height: 4px;
+    z-index: 1500;
+    background: linear-gradient(to right, #8b5a3c, #d9a066, #ffe2b8);
+}
 
-/* sobre */
+/* ---------- CHUVA DE GRÃOS NO HEADER ---------- */
+.graos{
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;     /* o clique "atravessa" os grãos */
+}
+
+.grao{
+    position: absolute;
+    top: -20px;
+    width: 9px;
+    height: 14px;
+    border-radius: 50%;
+    background: #6b3f26;
+    opacity: 0.55;
+    animation: cair linear infinite;   /* duração e atraso vêm do JS */
+}
+
+/* a "linha" no meio do grão de café */
+.grao::after{
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    bottom: 10%;
+    width: 2px;
+    margin-left: -1px;
+    border-radius: 2px;
+    background: #2a1710;
+}
+
+@keyframes cair{
+    from { top: -20px;  transform: rotate(0deg); }
+    to   { top: 100%;   transform: rotate(360deg); }
+}
+
+/* ---------- SAUDAÇÃO E STATUS (ABERTO / FECHADO) ---------- */
+.conteudo-header .saudacao{
+    font-size: 16px;
+    color: #d9a066;
+    margin-bottom: 6px;
+}
+
+.conteudo-header .status-loja{
+    font-size: 15px;
+    color: #c9b29b;
+    margin-bottom: 12px;
+}
+
+.ponto{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 8px;
+    border-radius: 50%;
+}
+
+.ponto.ligado{
+    background: #6fcf7f;
+    box-shadow: 0 0 8px #6fcf7f;
+    animation: piscar 1.6s ease-in-out infinite;
+}
+
+.ponto.desligado{
+    background: #d9665a;
+}
+
+@keyframes piscar{
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.35; }
+}
+
+/* carrossel; */
+.slide{
+    border-radius: 14px;
+    box-shadow: 0 10px  black;
+}
+
+.slide.ativo{
+    animation: aparecer 0.6s ease
+}
+
+@keyframes aparecer{
+    from {opacity: 0; transform: scale(0.96);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+
+.bolinhas{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.bolinha{
+    width: 12px;
+    height: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #4a352a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.bolinha:hover{
+    background-color: #c68b59;
+}
+
+.bolinha.ativa{
+    width: 28px;
+    background: #d9a066;
+}
+
+/* AVISO */
+
+.aviso{
+    position: fixed;
+    left: 50%;
+    bottom: 30px;
+    z-index: 1300;
+    max-width: 90%;
+    padding: 12px 22px;
+    border-radius: 30px;
+    background: #c68b59;
+    color: #1f1612;
+    font-weight: 600;
+    text-align: center;
+    opacity: 0;
+    transform: translate(-50%, 30px);
+    pointer-events: none;
+    transition: all 0.35s ease;
+}
+
+.aviso.ativo{
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* CHUVA DE CAFE::sdas */
+
+.cafe-cai{
+    position: fixed;
+    top: -40px;
+    z-index: 1200;
+    font-size: 28px;
+    pointer-events: none;
+    animation: cairtela linear forwards
+}
+
+@keyframes cairtela {
+    to{top: 105vh; transform: rotate(360deg);}
+}
+
+/* ---------- CARDÁPIO: TÍTULO, BUSCA E "ME SURPREENDA" ---------- */
+
+.cardapio-topo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    padding: 50px 20px 0;
+}
+
+.titulo-cardapio{
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    color: #d9a066
+}
+
+.campo-busca{
+    min-width: 260px;
+    padding: 10px 16px;
+    border: 1px solid #4a352a;
+    border-radius: 30px;
+    background: #2a1d17;
+    color: #f5e6d3;
+    font-size: 16px;
+}
+
+.campo-busca::placeholder{
+    color: #8f7a68;
+}
+
+.campo-busca:focus{
+    outline: none;
+    border-color: #c68b59;
+    box-shadow: 0 0 10px rgba(198, 139, 89, 0.5);
+}
+
+
+.btn-surpresa{
+    padding: 10px 20px;
+    border: 2px solid #c68b59;
+    border-radius: 30px;
+    background: #c68b59;
+    color: #1f1612;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-surpresa:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(198, 139, 89, 0.45);
+}
+
+.btn-secundario{
+    background: none;
+    color: #d9a066;
+}
+
+.sem-resultado{
+    text-align: center;
+    color: #c9b29b;
+    margin-top: 20px;
+}
+
+tr.destaque{
+    animation: brilhar 0.8s ease 3;
+}
+
+@keyframes brilhar{
+    0%, 100% { background-color: transparent; }
+    50%      { background-color: rgba(217, 160, 102, 0.4); }
+}
+
+/* CAFE VOANDO ATE O CARRINHO:: */
+
+.voador{
+    position: fixed;
+    z-index: 1100;
+    font-size: 22px;
+    pointer-events: none;
+    /* left e top com ritmos diferentes fazem o caminho ficar curvo */
+    transition: left 0.8s ease-out, top 0.8s ease-in, transform 0.8s, opacity 0.8s;
+}
+
+.btn-carrinho.pulo{
+    animation: pulo 0.4s ease;
+}
+
+@keyframes pulo{
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.25); }
+}
+
+
+.sobre-numeros{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 36px;
+}
+
+.numero-box{
+    text-align: center;
+}
+
+.numero-grande{
+    font-size: 44px;
+    font-weight: 700;
+    color: #d9a066;
+}
+
+.numero-box small{
+    color: #c9b29b;
+    font-size: 14px;
+}
+
+.card-sobre{
+    transition: all 0.3s ease;
+}
+
+.card-sobre:hover{
+    transform: translateY(-8px);
+    border-color: #c68b59;
+    box-shadow: 0 10px 24px rgba(198, 139, 89, 0.25);
+}
+
 #sobre{
     max-width: 1000px;
     margin: 0 auto;           /* centraliza a seção na tela */
@@ -529,5 +833,356 @@ html{
     color: #c9b29b;
 }
 
+/* VOCE SABIAw? */
+
+#curiosidades{
+    padding: 0 20px 50px;
+}
+
+.voce-sabia{
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px 24px;
+    background: #2a1d17;
+    border-left: 4px solid #c68b59;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+}
+
+.voce-sabia strong{
+    color: #d9a066;
+}
+
+.voce-sabia p{
+    margin: 8px 0;
+    line-height: 1.6;
+    transition: opacity 0.4s ease;
+}
+
+.voce-sabia p.sumindo{
+    opacity: 0;
+}
+
+.voce-sabia small{
+    color: #8f7a68;
+}
+
+/* QUIZ */
+
+#quiz, #fidelidade{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+#quiz h2, #fidelidade h2{
+    color: #d9a066;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.quiz-sub, .fid-texto{
+    color: #c9b29b;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.quiz-caixa{
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 24px;
+    background: #2a1d17;
+    border: 1px solid #4a352a;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.quiz-passo{
+    font-size: 14px;
+    color: #c9b29b;
+    margin-bottom: 8px;
+}
+
+.quiz-barra{
+    height: 6px;
+    margin-bottom: 18px;
+    border-radius: 3px;
+    background: #4a352a;
+    overflow: hidden;
+}
+
+.quiz-barra div{
+    height: 100%;
+    background: #c68b59;
+}
+
+.quiz-pergunta{
+    margin-bottom: 14px;
+    font-size: 22px;
+    color: #d9a066;
+}
+
+.quiz-opcao{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 14px;
+    border: 1px solid #4a352a;
+    border-radius: 8px;
+    background: #1f1612;
+    color: #f5e6d3;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.quiz-opcao:hover{
+    border-color: #c68b59;
+    background: #3b2a21;
+    transform: translateX(6px);
+}
+
+.quiz-resultado{
+    text-align: center;
+}
+
+.quiz-resultado img{
+    width: 160px;
+    height: 160px;
+    margin-bottom: 12px;
+    border: 2px solid #c68b59;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.quiz-resultado h3{
+    margin-bottom: 8px;
+    font-size: 24px;
+    color: #d9a066;
+}
+
+.quiz-resultado p{
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: #c9b29b;
+}
+
+.quiz-acoes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* CARATO FIDELIDADE */
+
+.selos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.selo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 56px;
+    border: 2px dashed #4a352a;
+    border-radius: 50%;
+    color: #6b5444;
+    font-weight: 700;
+}
+
+.selo.cheio{
+    border: 2px solid #c68b59;
+    background: #3b2a21;
+    font-size: 26px;
+}
+
+/* o selo novo "carimba": começa grande e girado, e assenta */
+.selo.novo{
+    animation: carimbar 0.5s ease;
+}
+
+@keyframes carimbar{
+    from { transform: scale(2.2) rotate(-25deg); opacity: 0; }
+    to   { transform: scale(1) rotate(0deg);     opacity: 1; }
+}
+
+.selos-texto{
+    margin-bottom: 14px;
+    color: #c9b29b;
+}
+
+.link-pequeno{
+    display: block;
+    margin: 14px auto 0;
+    border: none;
+    background: none;
+    color: #8f7a68;
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* nome no copo */
+
+.nome-copo{
+    margin-bottom: 14px;
+    text-align: center;
+}
+
+.nome-copo label{
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #c9b29b;
+}
+
+.nome-copo input{
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #4a352a;
+    border-radius: 6px;
+    background: #1f1612;
+    color: #f5e6d3;
+}
+
+.nome-copo input:focus{
+    outline: none;
+    border-color: #c68b59;
+}
+
+/* o copinho é desenhado só com CSS */
+.copo{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 64px;
+    margin: 22px auto 0;
+    border-radius: 4px 4px 30px 30px;
+    background: #f5e6d3;
+}
+
+/* a alça do copo */
+.copo::after{
+    content: '';
+    position: absolute;
+    right: -22px;
+    top: 12px;
+    width: 26px;
+    height: 30px;
+    border: 6px solid #f5e6d3;
+    border-left: none;
+    border-radius: 0 20px 20px 0;
+}
+
+/* a fumacinha subindo */
+.copo::before{
+    content: '';
+    position: absolute;
+    top: -22px;
+    left: 40px;
+    width: 10px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(245, 230, 211, 0.5);
+    filter: blur(4px);
+    animation: vapor 2.2s ease-in-out infinite;
+}
+
+@keyframes vapor{
+    0%   { transform: translateY(8px) scaleY(0.6);   opacity: 0; }
+    50%  { opacity: 0.8; }
+    100% { transform: translateY(-14px) scaleY(1.2); opacity: 0; }
+}
+
+.copo span{
+    max-width: 78px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 700;
+    color: #3b2a21;
+}
 
 
+/* botao pro topo:^::: */
+
+.btn-topo{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 800;
+    width: 48px;
+    height: 48px;
+    border: 2px solid #c68b59;
+    border-radius: 50%;
+    background: #2a1d17;
+    color: #d9a066;
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;          /* invisível = não atrapalha os cliques */
+    transition: all 0.3s ease;
+}
+
+.btn-topo.visivel{
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+}
+
+.btn-topo:hover{
+    background: #c68b59;
+    color: #1f1612;
+}
+
+/* rodape */
+
+.rodape-site{
+    margin-top: 30px;
+    padding: 30px 20px 100px;
+    border-top: 1px solid #4a352a;
+    text-align: center;
+    color: #8f7a68;
+}
+
+/* ---------- TELAS PEQUENAS ---------- */
+@media (max-width: 600px){
+    .nav-links{
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+    }
+    .slide{
+        height: 340px;
+    }
+    /* a tabela do cardápio é larga: no celular ela rola para o lado
+       DENTRO da coluna, em vez de empurrar a página inteira */
+    .coluna{
+        overflow-x: auto;
+    }
+}
+
+/* ---------- QUEM PREFERE MENOS MOVIMENTO ---------- */
+/* Se o sistema da pessoa pede menos animação, desligamos as mais "chamativas" */
+@media (prefers-reduced-motion: reduce){
+    .grao{
+        display: none;
+    }
+    .com-js .revelar{
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}

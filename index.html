@@ -12,20 +12,30 @@
 </head>
 
 <body>
+
+    <div id="barra-progresso" class="barra-progresso"></div>
+
     <header>
+        <!-- chuva de graos no cabecalho -->
+        <div id="graos" class="graos" aria-hidden="true"></div>
+
         <div class="conteudo-header">
+            <p id="saudacao" class="saudacao"></p>
             <h1>CAFETERIA</h1>
+            <p id="status-loja" class="status-loja"></p>
             <p>Um refúgio urbano onde o café de especialidade atinge seu ponto máximo em meio a um refúgio de plantas e luz natural. O lugar ideal para desacelerar, saborear quitutes artesanais e renovar as energias.</p>
         </div>
     </header>
+
         <nav class="navegar">
             <div class="logo">
                 <!-- &amp; = & -->
-                <a href="#">☕ Café &amp; Prosa</a>
+                <a href="#" id="logo-link">☕ Café &amp; Prosa</a>
             </div>
             <ul class="nav-links">
                 <li><a href="#cardapio">Cardápio</a></li>
                 <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#quiz">Seu Café</a></li>
                 <li><a href="#contato" id="link-contato">Contato</a></li>
             </ul>
             <a href="#cardapio" class="btn-pedir">Peça Online</a>
@@ -42,7 +52,8 @@
 
                     <button class="seta" id="seta-dir" aria-label="Próximo">›</button>
                 </div>
-            </div>   
+            </div>  
+                <div id="bolinhas" class="bolinhas"></div> 
             <footer>
                 <div class="scroll-baixo">
                     <span>Role pra baixo</span>
@@ -51,8 +62,16 @@
             </footer>
 
             <section id="cardapio">
-                
-                <div class="tabelas">
+                <div class="cardapio-topo">   
+                    <div class="titulo-cardapio">Nosso Cardapio</div>
+                    <input type="search" id="busca" class="campo-busca" placeholder="🔎 Buscar no cardápio..." aria-label="Buscar no cardápio">
+                    <button type="button" id="btn-surpresa" class="btn-surpresa">🎲 Me surpreenda</button>
+                </div>
+
+                <p id="sem-resultado" class="sem-resultado oculto">Nenhum item encontrado... tente outra palavra ☕</p>
+
+
+                <div class="tabelas revelar">
                     <div class="coluna" id="cafesebebidas">
                         <h2>Cafés &amp; Bebidas</h2>
                             <table>
@@ -139,7 +158,7 @@
 
             </section>
 
-            <section id="sobre">
+            <section id="sobre" class="revelar">
                 <h2>Sobre a Café &amp; Prosa</h2>
 
                 <p class="sobre-texto">
@@ -147,6 +166,24 @@
                     Aqui, cada xícara de café especial é servida com calma, nossos quitutes são preparados de forma 
                     artesanal todos os dias, e o ambiente convida você a desacelerar e aproveitar os bons momentos.
                 </p>
+
+                <div class="sobre-numeros">
+                    <div class="numero-box">
+                        <div class="numero-grande">+<span class="numero" data-alvo="5000">0</span></div>
+                            <small>xícaras servidas</small>
+                    </div>
+
+                    <div class="numero-box">
+                        <div class="numero-grande">+<span class="numero" data-alvo="12">0</span></div>
+                            <small>tipos de grãos</small>
+                    </div>
+
+                    <div class="numero-box">
+                        <div class="numero-grande">+<span class="numero" data-alvo="3">0</span></div>
+                            <small>anos de história</small>
+                    </div>
+
+                </div>
             
                 <div class="sobre-cards">
                     <div class="card-sobre">
@@ -166,9 +203,29 @@
                 </div>
         </section>
 
-        
-            
 
+        <section id="curiosidades" class="revelar">
+            <div class="voce-sabia" id="caixa-curiosidade" title="Clique para ver outra curiosidade">
+                <strong>💡 Você sabia?</strong>
+                <p id="curiosidade"></p>
+                <small>(clique para ver outra)</small>
+            </div>
+        </section>
+
+        <section id="quiz" class="revelar">
+                <h2>Qual café combina com você?</h2>
+                <p class="quiz-sub">Responda 3 perguntinhas e o barista escolhe um café (e um acompanhamento) para você.</p>
+                <div id="quiz-caixa" class="quiz-caixa"></div>
+            </section>
+            
+        <section id="fidelidade" class="revelar">
+                <h2>Cartão Fidelidade</h2>
+                <p class="fid-texto">A cada pedido finalizado você ganha 1 selo. Com 8 selos, o próximo café é por nossa conta!</p>
+                <div id="selos" class="selos"></div>
+                <p id="selos-texto" class="selos-texto"></p>
+                <button type="button" id="btn-resgatar" class="btn-surpresa oculto">🎁 Resgatar meu café grátis</button>
+                <button type="button" id="btn-zerar-selos" class="link-pequeno">reiniciar cartão (para testar)</button>
+            </section>
 
             <!-- CARRINHO -->
 
@@ -190,6 +247,12 @@
                 <div id="carrinho-itens" class="carrinho-itens"></div>
 
                 <div class="carrinho-footer">
+                    <div class="nome-copo">
+                        <label for="nome-copo">☕ Nome para o copo</label>
+                        <input type="text" id="nome-copo" maxlength="14" placeholder="Seu nome">
+                        <div class="copo"><span id="copo-nome">Seu nome</span></div>
+                    </div>
+
                     <div class="linha-total">
                         <span>Subtotal</span>
                         <span id="carrinho-subtotal">R$ 0,00</span>
@@ -198,7 +261,14 @@
                 </div>
              </aside>
 
+            <footer class="rodape-site">
+                <p>☕ Café &amp; Prosa · Feito com carinho (e muita cafeína)</p>
+            </footer>
 
+            <!-- Aviso rápido que aparece e some sozinho -->
+            <div id="aviso" class="aviso" role="status" aria-live="polite"></div>
+
+            <button id="btn-topo" class="btn-topo" aria-label="Voltar ao topo">↑</button>
 
             <script src="java/index.js"></script>
 </body>
